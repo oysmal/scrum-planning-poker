@@ -43,6 +43,23 @@ class ScrumCardContainer extends LitElement {
                 transform: translateX(-50%) translateY(-50%) scale(4);
                 transition: ease-in-out 0.5s;
             }
+            .rotate-hide {
+                transform: rotate3d(0, 0, 1, 180);
+                transition: ease-in-out 1s;
+            }
+            .visible {
+                display: block;
+                z-index: 1;
+                background-color: white;
+                left: 50%;
+                top: 50%;
+                position: absolute;
+                transform: translateX(-50%) translateY(-50%) scale(4);
+                transition: ease-in-out 0.5s;
+            }
+            .not-visible {
+                display: none;
+            }
         `;
     }
 
@@ -68,8 +85,32 @@ class ScrumCardContainer extends LitElement {
         const newState = (e.target.state + 1) % 3;
         console.log(newState);
         const c = ScrumCardContainer.getStateClass(newState);
-        e.target.className = c;
+        // e.target.className = c;
         e.target.state = newState;
+        const value = e.target.value;
+        console.log(value);
+        const el = this.shadowRoot.querySelector('.dup-' + value);
+        console.log(el);
+        const visible = [CardState.SELECTED, CardState.VISIBLE].includes(newState) ? ' visible' : 'not-visible';
+        console.log(visible + (newState === CardState.SELECTED ? ' rotate-hide' : ''));
+        el.className = 'dup-' + value + visible + (newState === CardState.SELECTED ? ' rotate-hide' : '');
+        console.log(el.className);
+    }
+
+    handleClick2(e) {
+        const newState = (e.target.state + 1) % 3;
+        e.target.state = newState;
+        const value = e.target.value;
+        console.log(value);
+        const el = e.target;
+        const real = el.previousSibling;
+        console.log(el);
+        console.log(real);
+        real.state = newState;
+
+        const visible = [CardState.SELECTED, CardState.VISIBLE].includes(newState) ? ' visible' : 'not-visible';
+        el.className = 'dup-' + value + visible + (newState === CardState.SELECTED ? ' rotate-hide' : '');
+        console.log(el.className);
     }
 
     render() {
@@ -80,6 +121,7 @@ class ScrumCardContainer extends LitElement {
                         (i) =>
                             html`
                                 <scrum-card value="${i}" state="0" @click="${this.handleClick}"></scrum-card>
+                                <scrum-card class="dup-${i} not-visible" value="${i}" state="0" @click="${this.handleClick}"></scrum-card>
                             `,
                     )}
                 `}
