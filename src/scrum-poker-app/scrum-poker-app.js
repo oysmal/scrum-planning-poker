@@ -24,6 +24,7 @@ class ScrumPokerApp extends LitElement {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                background-color: var(--bg);
             }
         `;
     }

@@ -1,0 +1,11 @@
+:root {
+    --bg: #33312e;
+    --bg2: #e2481d;
+    --fg-dark: #131b23;
+    --fg-light: #d1c6ad;
+    --highlight: #c3f73a;
+}
+
+body {
+    margin: 0;
+}

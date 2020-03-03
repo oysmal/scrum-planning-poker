@@ -22,20 +22,24 @@ class ScrumCardContainer extends LitElement {
     static get styles() {
         return css`
             :host {
-                width: 100%;
             }
             .container {
-                width: 100%;
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
             }
             .container > * {
                 margin-right: 10px;
                 margin-bottom: 10px;
             }
+            .container > *:nth-child(5),
+            .container > *:nth-child(11),
+            .container > *:nth-child(17) {
+                margin-right: 0px;
+            }
             .big {
                 z-index: 1;
-                background-color: white;
+                background-color: var(--bg2);
                 left: 50%;
                 top: 50%;
                 position: absolute;
@@ -43,10 +47,9 @@ class ScrumCardContainer extends LitElement {
                 transition: ease-in-out 0.5s;
             }
             .visible {
-                background-color: rgba(255,255,255,1.0);
+                background-color: var(--bg2);
                 display: flex;
-                z-index: 1;
-                background-color: white;
+                z-index: 2;
                 left: 50%;
                 top: 50%;
                 position: absolute;
@@ -72,10 +75,11 @@ class ScrumCardContainer extends LitElement {
                 background-color: rgba(0,0,0,0.0);
                 display: none;
             }
-            .overlay.active {
+            .active {
                 transition: ease-in-out 0.5s;
-                background-color: rgba(0,0,0,0.4);
+                background-color: var(--bg);
                 display: block;
+                z-index: 1;
             }
         `;
     }
