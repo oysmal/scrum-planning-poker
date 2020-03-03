@@ -37,19 +37,10 @@ class ScrumCardContainer extends LitElement {
             .container > *:nth-child(17) {
                 margin-right: 0px;
             }
-            .big {
-                z-index: 1;
-                background-color: var(--bg2);
-                left: 50%;
-                top: 50%;
-                position: absolute;
-                transform:  rotate3d(0, 1, 0, 180deg) translateX(-50%) translateY(-50%) scale(3);
-                transition: ease-in-out 0.5s;
-            }
             .visible {
-                background-color: var(--bg2);
+                background: linear-gradient(315deg, var(--highlight) 0%, var(--bg2) 81%);
                 display: flex;
-                z-index: 2;
+                z-index: 4;
                 left: 50%;
                 top: 50%;
                 position: absolute;
@@ -67,7 +58,9 @@ class ScrumCardContainer extends LitElement {
 
             .overlay {
                 transition: ease-in-out 0.5s;
-                position: fixed;
+                position: absolute;
+                width: 100%;
+                height: 100%;
                 top: 0;
                 left: 0;
                 right: 0;
