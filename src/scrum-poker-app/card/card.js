@@ -31,7 +31,7 @@ class ScrumCard extends LitElement {
     static get styles() {
         return css`
             :host {
-                background-color: var(--fg-dark);
+                background-color: var(--bg2);
                 display: inline-block;
                 padding: 10px;
                 width: 25vw;
@@ -46,11 +46,11 @@ class ScrumCard extends LitElement {
                 cursor: pointer;
             }
             span {
-                color: var(--fg-light);
+                color: var(--fg);
             }
 
             .selected > span {
-                color: var(--fg-light);
+                color: var(--fg);
                 visibility: hidden;
             }
         `;

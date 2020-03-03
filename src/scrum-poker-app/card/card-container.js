@@ -38,7 +38,7 @@ class ScrumCardContainer extends LitElement {
                 margin-right: 0px;
             }
             .visible {
-                background: linear-gradient(315deg, var(--highlight) 0%, var(--bg2) 81%);
+                background: --bg2;
                 display: flex;
                 z-index: 4;
                 left: 50%;
@@ -48,10 +48,10 @@ class ScrumCardContainer extends LitElement {
                 transition: ease-in-out 0.5s;
             }
             .show {
-                transform:  translateX(-50%) translateY(-50%) scale(3) rotate3d(0, 1, 0, 0deg) ;
+                transform: translateX(-50%) translateY(-50%) scale(3) rotate3d(0, 1, 0, 0deg);
             }
             .not-visible {
-                background-color: rgba(0,0,0,0.0);
+                background-color: rgba(0, 0, 0, 0);
                 transition: ease-in-out 0.5s;
                 display: none;
             }
@@ -65,7 +65,7 @@ class ScrumCardContainer extends LitElement {
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(0,0,0,0.0);
+                background-color: rgba(0, 0, 0, 0);
                 display: none;
             }
             .active {
@@ -134,12 +134,22 @@ class ScrumCardContainer extends LitElement {
                     ${this.myArray.map(
                         (i) =>
                             html`
-                                <scrum-card class="orig-${i}" value="${i}" state="0" @click="${this.handleClick}"></scrum-card>
-                                <scrum-card class="dup-${i} not-visible" value="${i}" state="0" @click="${this.handleClick2}"></scrum-card>
+                                <scrum-card
+                                    class="orig-${i}"
+                                    value="${i}"
+                                    state="0"
+                                    @click="${this.handleClick}"
+                                ></scrum-card>
+                                <scrum-card
+                                    class="dup-${i} not-visible"
+                                    value="${i}"
+                                    state="0"
+                                    @click="${this.handleClick2}"
+                                ></scrum-card>
                             `,
                     )}
                 `}
-                <div class="overlay"/>
+                <div class="overlay" />
             </div>
         `;
     }
