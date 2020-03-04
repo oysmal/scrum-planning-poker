@@ -50,21 +50,9 @@ class ScrumCard extends LitElement {
             }
 
             .selected > span {
-                color: var(--fg);
                 visibility: hidden;
             }
         `;
-    }
-
-    static getStateClass(state) {
-        switch (state) {
-            case CardState.SELECTED:
-                return 'big selected ';
-            case CardState.VISIBLE:
-                return 'big ';
-            default:
-                return '';
-        }
     }
 
     constructor() {
@@ -74,7 +62,7 @@ class ScrumCard extends LitElement {
     }
 
     render() {
-        const classes = 'card ' + ScrumCard.getStateClass(this.state);
+        const classes = 'card ' + (this.state === CardState.SELECTED ? 'selected' : '');
         return html`
             <div class="${classes}">
                 <span>

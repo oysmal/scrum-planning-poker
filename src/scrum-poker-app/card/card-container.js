@@ -38,6 +38,7 @@ class ScrumCardContainer extends LitElement {
                 margin-right: 0px;
             }
             .visible {
+                -webkit-perspective: 1000;
                 background: --bg2;
                 display: flex;
                 z-index: 4;
@@ -48,8 +49,9 @@ class ScrumCardContainer extends LitElement {
                 transition: ease-in-out 0.5s;
             }
             .show {
-                transform: translateX(-50%) translateY(-50%) scale(3) rotate3d(0, 1, 0, 0deg);
+                transform: translateX(-50%) translateY(-50%) scale(3);
             }
+
             .not-visible {
                 background-color: rgba(0, 0, 0, 0);
                 transition: ease-in-out 0.5s;
@@ -75,17 +77,6 @@ class ScrumCardContainer extends LitElement {
                 z-index: 1;
             }
         `;
-    }
-
-    static getStateClass(state) {
-        switch (state) {
-            case CardState.SELECTED:
-                return 'big ';
-            case CardState.VISIBLE:
-                return 'big ';
-            default:
-                return '';
-        }
     }
 
     constructor() {
@@ -124,7 +115,7 @@ class ScrumCardContainer extends LitElement {
         el.className = 'dup-' + value + visible + (newState === CardState.VISIBLE ? ' show' : '');
         setTimeout(() => {
             el.state = newState;
-        }, 500);
+        }, 350);
     }
 
     render() {
