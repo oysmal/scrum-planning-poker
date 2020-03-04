@@ -1,7 +1,7 @@
 {
-  "name": "scrum-poker",
-  "short_name": "scrum-poker",
-  "description": "Scrum planning poker card app",
-  "start_url": "/",
-  "display": "standalone"
+    "name": "Scrum Poker Cards",
+    "short_name": "scrum-poker",
+    "description": "Scrum planning poker card app",
+    "start_url": "/",
+    "display": "standalone"
 }
